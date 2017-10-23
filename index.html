@@ -7,6 +7,24 @@ title: Github OAuth API Management
 
 <p><a href="http://github.oauth.login.apievangelist.com/index.php?action=login"><img src="https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-github-icon.png" alt="" width="150" align="right" /></a></p>
 
+<script type="text/javascript">
+  $appid = getUrlVar('login');
+  console.log($appid);
+  $appkey = getUrlVar('code');
+  console.log($appkey);
+  if($appid != '' && $appkey != '')
+    {
+    $('#auth-keys').html('');
+    $appid_link = '<li><strong>x-appid</strong> - ' + $appid + '</li>';
+    //console.log($appid_link)
+    $appkey_link = '<li><strong>x-appkey</strong> - ' + $appkey + '</li>';
+    //console.log($appkey_link)
+    $auth_html = '<ul>' + $appid_link + $appkey_link + '</ul>';
+    $('#auth-keys').html($auth_html);
+    $('#auth-header').html('Authentication (AUTHENTICATED)');
+    }
+</script>
+
 <p>This is a simple example of setting up a Github OAuth application, and using it for the login, and API keys for any API. All it does is login you using your Github account, then redirects back here and adding your username as appid, and a valid OAuth token as an appkeky--which can be used as API credentials, as well as working with a users Github account, depending on the application settings.</p>
 <ul id="auth-keys">
   <li id="auth-appid"><strong>x-appid</strong> - Your user.</li>
